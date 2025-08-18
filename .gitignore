@@ -1,0 +1,7 @@
+# Zig artifacts
+/zig-out
+/.zig-cache
+
+# Nix + direnv artifacts
+/.direnv/
+/result*
