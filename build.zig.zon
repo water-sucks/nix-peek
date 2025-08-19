@@ -1,0 +1,13 @@
+.{
+    .name = .nix_peek,
+    .version = "0.0.1",
+    .fingerprint = 0x4963d051f86969a,
+    .minimum_zig_version = "0.14.1",
+    .dependencies = .{
+        .zignix = .{
+            .url = "git+https://github.com/water-sucks/zignix#586f7618b605e9313ace264e6555c6a8b426d79c",
+            .hash = "zignix-0.0.1-0WwkOazaAABxwXeph-LltD2hQVn4cczFsAwhhWWnsRQ6",
+        },
+    },
+    .paths = .{ "build.zig", "build.zig.zon", "src" },
+}
