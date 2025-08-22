@@ -8,6 +8,10 @@
 
     nix.url = "github:nixos/nix/2.30.2";
 
+    zig-deps-fod.url = "github:water-sucks/zig-deps-fod";
+    zig-deps-fod.inputs.nixpkgs.follows = "nixpkgs";
+    zig-deps-fod.inputs.flake-parts.follows = "flake-parts";
+
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -43,6 +47,16 @@
           buildInputs = [
             nixPackage.dev
           ];
+        };
+
+        packages = let
+          nix-peek = pkgs.callPackage ./package.nix {
+            inherit (inputs.zig-deps-fod.lib) fetchZigDeps;
+            nix = nixPackage;
+          };
+        in {
+          inherit nix-peek;
+          default = nix-peek;
         };
       };
     };

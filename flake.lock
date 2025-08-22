@@ -210,7 +210,31 @@
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "nix": "nix",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "zig-deps-fod": "zig-deps-fod"
+      }
+    },
+    "zig-deps-fod": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755848024,
+        "narHash": "sha256-H25r4hcTNOfLUdx2WSOzrcmtb12wypfXcRog8Ez8TwQ=",
+        "owner": "water-sucks",
+        "repo": "zig-deps-fod",
+        "rev": "d5437b323dc6866972ad280dabfa3aa1e9981d10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "water-sucks",
+        "repo": "zig-deps-fod",
+        "type": "github"
       }
     }
   },
