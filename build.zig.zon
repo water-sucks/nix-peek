@@ -5,8 +5,8 @@
     .minimum_zig_version = "0.14.1",
     .dependencies = .{
         .zignix = .{
-            .url = "git+https://github.com/water-sucks/zignix#586f7618b605e9313ace264e6555c6a8b426d79c",
-            .hash = "zignix-0.0.1-0WwkOazaAABxwXeph-LltD2hQVn4cczFsAwhhWWnsRQ6",
+            .url = "git+https://github.com/water-sucks/zignix#c623cd0410a0b8c1432a708081f157bd906547ab",
+            .hash = "zignix-0.0.1-0WwkOZoMAQB01KtLDYsrwigR9ClrNmaAvZL94wPGMWuo",
         },
     },
     .paths = .{ "build.zig", "build.zig.zon", "src" },

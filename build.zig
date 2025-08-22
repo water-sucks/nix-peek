@@ -19,11 +19,6 @@ pub fn build(b: *std.Build) void {
         .root_module = exe_mod,
     });
 
-    exe.linkLibC();
-    exe.linkSystemLibrary("nix-util-c");
-    exe.linkSystemLibrary("nix-store-c");
-    exe.linkSystemLibrary("nix-expr-c");
-
     b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
