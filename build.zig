@@ -4,19 +4,23 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const zignix_dep = b.dependency("zignix", .{});
-    const zignix_mod = zignix_dep.module("zignix");
+    const flags_dep = b.dependency("flags", .{});
+    const flags_mod = flags_dep.module("flags");
 
     const vaxis_dep = b.dependency("vaxis", .{});
     const vaxis_mod = vaxis_dep.module("vaxis");
+
+    const zignix_dep = b.dependency("zignix", .{});
+    const zignix_mod = zignix_dep.module("zignix");
 
     const exe_mod = b.createModule(.{
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
-    exe_mod.addImport("zignix", zignix_mod);
+    exe_mod.addImport("flags", flags_mod);
     exe_mod.addImport("vaxis", vaxis_mod);
+    exe_mod.addImport("zignix", zignix_mod);
 
     const exe = b.addExecutable(.{
         .name = "nix-peek",

@@ -11,7 +11,7 @@
   deps = fetchZigDeps {
     inherit name zig stdenv;
     src = ./.;
-    depsHash = "sha256-hJaeSHvwNLrcpPUkFu9bm4eOYnHSs2p/CnYwdaoCUuI=";
+    depsHash = "sha256-V5KY4Az6UpjwaO+YkqwlFLn2lJTL2p8JyGjkX+BLWlo=";
   };
 in
   stdenv.mkDerivation (finalAttrs: {

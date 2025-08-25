@@ -12,6 +12,10 @@
             .url = "git+https://github.com/rockorager/libvaxis.git#de4f564ba281e9ed4df65834d00727d88f56632b",
             .hash = "vaxis-0.5.1-BWNV_JIWCQAoX8lZ-5eLf-sFzA-h7aXvNNEenyC2b83s",
         },
+        .flags = .{
+            .url = "git+https://github.com/joegm/flags#1dc0af323f7f3ffdf81d575c762ed5584f044713",
+            .hash = "flags-0.10.0-a_9h3ltuAAD218bNoRstScMFf5TWCj_-6CuMa-OZ8Oie",
+        },
     },
     .paths = .{ "build.zig", "build.zig.zon", "src" },
 }
