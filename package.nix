@@ -11,7 +11,7 @@
   deps = fetchZigDeps {
     inherit name zig stdenv;
     src = ./.;
-    depsHash = "sha256-i7q9zIMK0UQkcUhTc1LLdoJ7YPWaI1XLwsw1zdu+j9A=";
+    depsHash = "sha256-hJaeSHvwNLrcpPUkFu9bm4eOYnHSs2p/CnYwdaoCUuI=";
   };
 in
   stdenv.mkDerivation (finalAttrs: {
@@ -19,20 +19,15 @@ in
     version = "0.0.1";
     src = ./.;
 
+    postPatch = ''
+      ZIG_GLOBAL_CACHE_DIR=$(mktemp -d)
+      export ZIG_GLOBAL_CACHE_DIR
+
+      ln -s ${deps} "$ZIG_GLOBAL_CACHE_DIR/p"
+    '';
+
     nativeBuildInputs = [zig.hook pkg-config];
     buildInputs = [nix.dev];
-
-    zigBuildFlags = [
-      "--cache-dir"
-      "./zig-cache"
-      "--global-cache-dir"
-      "./.cache"
-    ];
-
-    postPatch = ''
-      mkdir -p .cache
-      ln -s ${deps} .cache/p
-    '';
 
     meta = {
       homepage = "https://github.com/water-sucks/nix-peek";

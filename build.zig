@@ -7,12 +7,16 @@ pub fn build(b: *std.Build) void {
     const zignix_dep = b.dependency("zignix", .{});
     const zignix_mod = zignix_dep.module("zignix");
 
+    const vaxis_dep = b.dependency("vaxis", .{});
+    const vaxis_mod = vaxis_dep.module("vaxis");
+
     const exe_mod = b.createModule(.{
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
     exe_mod.addImport("zignix", zignix_mod);
+    exe_mod.addImport("vaxis", vaxis_mod);
 
     const exe = b.addExecutable(.{
         .name = "nix-peek",
