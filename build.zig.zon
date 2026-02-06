@@ -5,16 +5,16 @@
     .minimum_zig_version = "0.14.1",
     .dependencies = .{
         .zignix = .{
-            .url = "git+https://github.com/water-sucks/zignix#c623cd0410a0b8c1432a708081f157bd906547ab",
-            .hash = "zignix-0.0.1-0WwkOZoMAQB01KtLDYsrwigR9ClrNmaAvZL94wPGMWuo",
+            .url = "git+https://git.sr.ht/~watersucks/zignix#8287103f40104a1d5e55aafe051b384f4f657874",
+            .hash = "zignix-0.0.1-0WwkOQl_AQACCvAR6wXU_qqG5u8S_QKM__7CUwfdXZki",
         },
         .vaxis = .{
-            .url = "git+https://github.com/rockorager/libvaxis.git#de4f564ba281e9ed4df65834d00727d88f56632b",
-            .hash = "vaxis-0.5.1-BWNV_JIWCQAoX8lZ-5eLf-sFzA-h7aXvNNEenyC2b83s",
+            .url = "git+https://github.com/rockorager/libvaxis.git#8a9c2d5e1b3778f1ea43c9bd5d325cfa72016584",
+            .hash = "vaxis-0.5.1-BWNV_Bw_CQAIVNh1ekGVzbip25CYBQ_J3kgABnYGFnI4",
         },
         .flags = .{
-            .url = "git+https://github.com/joegm/flags#1dc0af323f7f3ffdf81d575c762ed5584f044713",
-            .hash = "flags-0.10.0-a_9h3ltuAAD218bNoRstScMFf5TWCj_-6CuMa-OZ8Oie",
+            .url = "git+https://github.com/joegm/flags#2d62be30ff33661a2a3c6743ac922a78302d78a0",
+            .hash = "flags-0.10.0-a_9h3pxvAAA6wPndlO7ktfrpZUmhQu1y8aDm0lTi5ATR",
         },
     },
     .paths = .{ "build.zig", "build.zig.zon", "src" },

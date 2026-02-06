@@ -1,23 +1,23 @@
 {
   lib,
   stdenv,
+  nix-gitignore,
   zig,
   pkg-config,
   nix,
   fetchZigDeps,
 }: let
-  name = "nix-peek";
+  pname = "nix-peek";
+  version = "0.0.1";
+  src = nix-gitignore.gitignoreSource [] ./.;
 
   deps = fetchZigDeps {
-    inherit name zig stdenv;
-    src = ./.;
-    depsHash = "sha256-V5KY4Az6UpjwaO+YkqwlFLn2lJTL2p8JyGjkX+BLWlo=";
+    inherit pname version src zig stdenv;
+    hash = "sha256-kK+8Cww0ibwRdN2uedQXceKxxO+sAjK5YtaGoBq1oIQ=";
   };
 in
   stdenv.mkDerivation (finalAttrs: {
-    pname = name;
-    version = "0.0.1";
-    src = ./.;
+    inherit pname version src;
 
     postPatch = ''
       ZIG_GLOBAL_CACHE_DIR=$(mktemp -d)
@@ -28,6 +28,23 @@ in
 
     nativeBuildInputs = [zig.hook pkg-config];
     buildInputs = [nix.dev];
+
+    buildPhase = ''
+      TERM=dumb zig build \
+        --release=safe \
+        -Dcpu=baseline \
+        --cache-dir $ZIG_GLOBAL_CACHE_DIR \
+        --global-cache-dir $ZIG_GLOBAL_CACHE_DIR
+    '';
+    #
+    installPhase = ''
+      TERM=dumb zig build install \
+        -Dcpu=baseline \
+        --release=safe \
+        --prefix $out \
+        --cache-dir $ZIG_GLOBAL_CACHE_DIR \
+        --global-cache-dir $ZIG_GLOBAL_CACHE_DIR
+    '';
 
     meta = {
       homepage = "https://github.com/water-sucks/nix-peek";

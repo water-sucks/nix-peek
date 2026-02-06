@@ -18,6 +18,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+
     exe_mod.addImport("flags", flags_mod);
     exe_mod.addImport("vaxis", vaxis_mod);
     exe_mod.addImport("zignix", zignix_mod);

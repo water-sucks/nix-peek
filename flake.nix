@@ -6,11 +6,9 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    nix.url = "github:nixos/nix/2.30.2";
-
     zig-deps-fod.url = "github:water-sucks/zig-deps-fod";
-    zig-deps-fod.inputs.nixpkgs.follows = "nixpkgs";
-    zig-deps-fod.inputs.flake-parts.follows = "flake-parts";
+    # zig-deps-fod.inputs.nixpkgs.follows = "nixpkgs";
+    # zig-deps-fod.inputs.flake-parts.follows = "flake-parts";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -28,13 +26,10 @@
 
       systems = nixpkgs.lib.systems.flakeExposed;
 
-      perSystem = {
-        pkgs,
-        system,
-        ...
-      }: let
+      perSystem = {pkgs, ...}: let
         inherit (pkgs) zig pkg-config;
-        nixPackage = inputs.nix.packages.${system}.nix;
+
+        nixPackage = pkgs.nixVersions.nix_2_33;
       in {
         devShells.default = pkgs.mkShell {
           name = "nix-peek-shell";
@@ -47,6 +42,10 @@
           buildInputs = [
             nixPackage.dev
           ];
+
+          shellHook = ''
+            export ZIG_GLOBAL_CACHE_DIR=$HOME/.cache/zig
+          '';
         };
 
         packages = let
