@@ -45,6 +45,11 @@
 
           shellHook = ''
             export ZIG_GLOBAL_CACHE_DIR=$HOME/.cache/zig
+
+            # These variables are interfering with the Zig compiler
+            # in the Nix devshell.
+            unset NIX_CFLAGS_COMPILE
+            unset NIX_LDFLAGS
           '';
         };
 
